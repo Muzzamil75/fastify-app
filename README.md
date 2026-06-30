@@ -1,4 +1,4 @@
-# ✂️ fastify-app-tony
+# ✂️ fastify-app
 
 Monolithic SaaS Application Starter based on Node.js and React Router. Develop both server and client with one `yarn dev`, create a single Docker image (built-in `Dockerfile`) and deploy it easily.
 
