@@ -1,0 +1,97 @@
+{
+  "name": "@fastify-app-tony/app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "yarn react-router build",
+    "clean": "yarn rimraf ./dist && yarn rimraf ./node_modules",
+    "codegen": "graphql-codegen",
+    "dev": "nodemon",
+    "start": "NODE_ENV=production node --loader extensionless --experimental-strip-types ./src/index.ts",
+    "test": "vitest run ./src -c ./vite.config.test.mjs",
+    "test:watch": "vitest run ./src -c ./vite.config.test.mjs --watch"
+  },
+  "nodemonConfig": {
+    "exec": "node --loader extensionless --experimental-strip-types ./src/index.ts | yarn pino-pretty --singleLine",
+    "ext": "js,ts,tsx,graphql",
+    "ignore": [
+      "dist/**",
+      "node_modules/**",
+      "src/web/**"
+    ],
+    "watch": "src"
+  },
+  "dependencies": {
+    "@envelop/core": "^5.3.2",
+    "@envelop/graphql-modules": "^8.0.0",
+    "@fastify/autoload": "^6.3.1",
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/env": "^5.0.3",
+    "@fastify/middie": "^9.0.3",
+    "@fastify/static": "^8.2.0",
+    "@graphql-tools/load-files": "^7.0.1",
+    "@graphql-tools/schema": "^10.0.25",
+    "@mcansh/remix-fastify": "^4.1.2",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@react-router/node": "^7.9.4",
+    "@sinclair/typebox": "^0.34.41",
+    "@vanilla-extract/css": "^1.17.4",
+    "@vanilla-extract/recipes": "^0.5.7",
+    "dotenv": "^17.2.3",
+    "dotenv-safe": "^9.1.0",
+    "extensionless": "^1.9.9",
+    "fastify": "^5.6.1",
+    "fastify-graceful-shutdown": "^5.0.0",
+    "fastify-plugin": "^5.1.0",
+    "graphql": "^16.11.0",
+    "graphql-modules": "patch:graphql-modules@npm%3A3.0.0#~/.yarn/patches/graphql-modules-npm-3.0.0-27f60c3f79.patch",
+    "graphql-sock": "^1.0.1",
+    "graphql-yoga": "^5.16.0",
+    "isbot": "^5.1.31",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-relay": "^20.1.1",
+    "react-router": "^7.9.4",
+    "react-router-relay": "workspace:^",
+    "relay-runtime": "^20.1.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^6.0.0",
+    "@graphql-codegen/graphql-modules-preset": "^5.0.3",
+    "@graphql-codegen/schema-ast": "^5.0.0",
+    "@graphql-codegen/typescript": "^5.0.2",
+    "@graphql-codegen/typescript-resolvers": "^5.1.0",
+    "@react-router/dev": "^7.9.4",
+    "@types/node": "^24.7.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
+    "@types/react-relay": "^18.2.1",
+    "@types/relay-runtime": "^19.0.3",
+    "@vanilla-extract/vite-plugin": "^5.1.1",
+    "graphql-codegen-typescript-resolvers-define": "^0.3.0",
+    "nodemon": "^3.1.10",
+    "pino-pretty": "^13.1.1",
+    "relay-compiler": "^20.1.1",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9",
+    "vite-plugin-cjs-interop": "^2.3.0",
+    "vite-plugin-relay-lite": "^0.11.0",
+    "vitest": "^3.2.4"
+  },
+  "extensionless": {
+    "lookFor": [
+      "js",
+      "mjs",
+      "cjs",
+      "ts",
+      "tsx"
+    ]
+  },
+  "ultra": {
+    "concurrent": [
+      "clean",
+      "build"
+    ]
+  }
+}

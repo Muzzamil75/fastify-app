@@ -1,0 +1,31 @@
+{
+  "name": "@fastify-app-tony/monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "app"
+  ],
+  "scripts": {
+    "build": "ultra -r build",
+    "build:dts": "ultra -r --build build:dts",
+    "clean": "ultra -r clean",
+    "dev": "ultra -r dev",
+    "format": "biome check --write --unsafe .",
+    "server:build": "yarn ultra -r --filter \"+@fastify-app-tony/app\" build",
+    "test": "yarn build && ultra -r test",
+    "typecheck": "tsc --noEmit",
+    "version": "yarn install && git stage yarn.lock"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.5",
+    "@types/node": "^24.7.0",
+    "@types/react": "^19.2.2",
+    "concurrently": "^9.2.1",
+    "react": "^19.2.0",
+    "relay-compiler": "^20.1.1",
+    "typescript": "^5.9.3",
+    "ultra-runner": "^3.10.5",
+    "vite": "^7.1.9"
+  },
+  "packageManager": "yarn@4.10.3"
+}
